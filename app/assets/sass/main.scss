@@ -1,9 +1,139 @@
-* {
-  margin: 0px;
-  padding: 0px;
+@import 'settings';
+
+.header {
+  background-color: $bg_main;
 }
 
-html,
-body {
-  color: #f00;
+
+.logo {
+
+  &__link {
+    width: 50%;
+  }
+
+  &__image {
+    width: 50%;
+    height: auto;
+    margin: 0px auto;
+  }
+}
+
+
+.tabs {
+  background-color: $bg_tabs;
+}
+
+
+.nav {
+
+  &-tabs {
+    border: none;
+  }
+
+  &-link {
+    color: $text_noactive;
+    text-align: center;
+    font-size: 32px;
+
+    @media (max-width: 576px) {
+      font-size: 28px;
+    }
+  }
+
+  &-tabs &-link {
+    margin-bottom: 0px;
+    border: none;
+    outline: none;
+  }
+
+  &-link:hover {
+    color: $orange;
+  }
+
+  &_active {
+    border-bottom: 3px solid $orange;
+  }
+
+  &-link_active {
+    color: $text_main;
+    font-weight: 800;
+  }
+}
+
+
+.form {
+
+  &-control {
+    max-width: 600px;
+    margin-right: 0.5rem;
+    padding: 20px;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+
+    ::placeholder {
+      color: $orange;
+    }
+  }
+
+  &__btn {
+    border: none;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    background-color: $bg_btn;
+    text-transform: uppercase;
+    font-size: 38px;
+
+    @media (max-width: 576px) {
+      font-size: 22px;
+    }
+  }
+
+  &-control:focus+&__btn {
+    border-color: #86b7fe;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, .25);
+  }
+}
+
+
+.list {
+
+  border-radius: 25px;
+  background-color: $bg_main;
+
+  &__done {
+    justify-self: center;
+  }
+
+  &__text {
+    margin-bottom: 0px;
+    padding: 15px;
+    border-bottom: 2px solid $bg_btn;
+    font-size: 24px;
+
+    @media (max-width: 576px) {
+      font-size: 18px;
+    }
+  }
+
+  &__delete {
+    justify-self: center;
+  }
+
+  &__done,
+  &__delete {
+    cursor: pointer;
+  }
+}
+
+
+.btn {
+  &_style {
+    border: none;
+    color: $orange;
+  }
 }

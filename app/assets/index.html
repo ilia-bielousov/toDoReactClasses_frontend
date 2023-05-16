@@ -18,76 +18,147 @@
       <div class="container">
         <div class="row">
           <div class="col-12 d-flex justify-content-center">
-            <div class="header__logo logo">
-              <h1 class="logo__text">
-                to<span class="logo__text_color"></span>do<span>
+            <div class="header__logo logo p-4">
+              <h1 class="logo__text mb-0 d-block text-center">
+                <a href="./" class="logo__link">
+                  <img src="./images/logo.png" alt="our logo" class="logo__image d-inline-block">
+                </a>
               </h1>
             </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="header__tabs tabs">
-            <nav class="tabs__nav">
-              <ul class="nav nav-tabs">
-                <div class="col-6">
-                  <li class="nav-item">
-                    <a href="#" class="nav-link active">
-                      Personal
-                    </a>
-                  </li>
-                </div>
-                <div class="col-6">
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      Professional
-                    </a>
-                  </li>
-                </div>
-              </ul>
-            </nav>
           </div>
         </div>
       </div>
     </header>
 
-    <!-- MAIN -->
-    <main class="main" id="main">
+    <!-- TABS -->
+    <div class="tabs">
       <div class="container">
         <div class="row">
-          <form action="#" class="main__form form">
+          <nav class="tabs__nav">
+            <ul class="nav nav-tabs">
+              <div class="col-12 col-sm-6">
+                <li class="nav-item nav_active">
+                  <a href="#" class="nav-link nav-link_active">
+                    Personal
+                  </a>
+                </li>
+              </div>
+              <div class="col-12 col-sm-6">
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    Professional
+                  </a>
+                </li>
+              </div>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAIN -->
+    <main class="main mb-2" id="main">
+      <div class="container">
+        <div class="row">
+          <form action="#" class="main__form form py-5">
             <div class="col-12 d-flex justify-content-center">
-              <input type="text" class="form-control" placeholder="What do you need to do?" style="max-width: 400px">
-              <button class="btn btn-primary">add</button>
+              <input type="text" class="form-control" placeholder="What do you need to do?">
+              <button class="form__btn btn btn-primary">add</button>
             </div>
           </form>
         </div>
-        <div class="main__list list">
+        <div class="main__list list p-3"> <!-- SVG media in react -->
           <div class="row">
             <ul class="list__inner">
-              <div class="list__item d-flex">
-                <div class="col-1">
-                  <span class="list__done">
-                    okej
+              <div class="list__item d-flex align-items-center">
+                <li class="col-2 col-sm-1 d-grid">
+                  <span class="list__done"> 
+                    <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <g clip-path="url(#clip0_116_188)">
+                        <path
+                          d="M38.557 21.834L23.4 36.991L15.143 28.757L11.9 32L23.4 43.5L41.8 25.1L38.557 21.834ZM28 9C15.304 9 5 19.304 5 32C5 44.696 15.304 55 28 55C40.696 55 51 44.696 51 32C51 19.304 40.696 9 28 9ZM28 50.4C17.834 50.4 9.6 42.166 9.6 32C9.6 21.834 17.834 13.6 28 13.6C38.166 13.6 46.4 21.834 46.4 32C46.4 42.166 38.166 50.4 28 50.4Z"
+                          fill="#D98326" />
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_116_188">
+                          <rect width="64" height="64" fill="white" />
+                        </clipPath>
+                      </defs>
+                    </svg>
                   </span>
-                </div>
-                <div class="col-10">
+                </li>
+                <li class="col-8 col-sm-10 d-grid">
                   <p class="list__text">
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci perspiciatis natus impedit!
                     Doloribus, molestiae aut!
                   </p>
-                </div>
-                <div class="col-1">
+                </li>
+                <li class="col-2 col-sm-1 d-grid">
                   <span class="list__delete">
-                    del
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <g opacity="0.3" clip-path="url(#clip0_116_185)">
+                        <path
+                          d="M7.99999 25.3333C7.99999 26.8 9.19999 28 10.6667 28H21.3333C22.8 28 24 26.8 24 25.3333V9.33333H7.99999V25.3333ZM10.6667 12H21.3333V25.3333H10.6667V12ZM20.6667 5.33333L19.3333 4H12.6667L11.3333 5.33333H6.66666V8H25.3333V5.33333H20.6667Z"
+                          fill="#B30B04" />
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_116_185">
+                          <rect width="32" height="32" fill="white" />
+                        </clipPath>
+                      </defs>
+                    </svg>
                   </span>
-                </div>
+                </li>
+              </div>
+              <div class="list__item d-flex align-items-center mb-5">
+                <li class="col-2 col-sm-1 d-grid">
+                  <span class="list__done">
+                    <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <g clip-path="url(#clip0_117_236)">
+                        <path
+                          d="M28 9C15.304 9 5 19.304 5 32C5 44.696 15.304 55 28 55C40.696 55 51 44.696 51 32C51 19.304 40.696 9 28 9ZM28 50.4C17.834 50.4 9.6 42.166 9.6 32C9.6 21.834 17.834 13.6 28 13.6C38.166 13.6 46.4 21.834 46.4 32C46.4 42.166 38.166 50.4 28 50.4Z"
+                          fill="#737373" />
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_117_236">
+                          <rect width="64" height="64" fill="white" />
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  </span>
+                </li>
+                <li class="col-8 col-sm-10 d-grid">
+                  <p class="list__text">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci perspiciatis natus impedit!
+                    Doloribus, molestiae aut!
+                  </p>
+                </li>
+                <li class="col-2 col-sm-1 d-grid">
+                  <span class="list__delete">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <g opacity="1" clip-path="url(#clip0_116_185)">
+                        <path
+                          d="M7.99999 25.3333C7.99999 26.8 9.19999 28 10.6667 28H21.3333C22.8 28 24 26.8 24 25.3333V9.33333H7.99999V25.3333ZM10.6667 12H21.3333V25.3333H10.6667V12ZM20.6667 5.33333L19.3333 4H12.6667L11.3333 5.33333H6.66666V8H25.3333V5.33333H20.6667Z"
+                          fill="#B30B04" />
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_116_185">
+                          <rect width="32" height="32" fill="white" />
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  </span>
+                </li>
               </div>
             </ul>
           </div>
           <div class="row">
-            <div class="col-12">
-              <button class="btn btn-primary">
-                delete alll
+            <div class="col-12 d-flex justify-content-end">
+              <button class="btn_style">
+                <svg width="28" height="34" viewBox="0 0 28 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M15.4545 11.1273L13.9091 9.58182L7.72727 15.7636L1.54545 9.58182L0 11.1273L6.18182 17.3091L0 23.4909L1.54545 25.0364L7.72727 18.8545L13.9091 25.0364L15.4545 23.4909L9.27273 17.3091L15.4545 11.1273ZM24.7273 0H9.27273C7.57273 0 6.18182 1.39091 6.18182 3.09091V7.72727H9.27273V4.63636H24.7273V29.3636H9.27273V26.2727H6.18182V30.9091C6.18182 32.6091 7.57273 34 9.27273 34H24.7273C26.4273 34 27.8182 32.6091 27.8182 30.9091V3.09091C27.8182 1.39091 26.4273 0 24.7273 0Z" fill="#D98326"/>
+                  </svg>
+                  Clear Completed                  
               </button>
             </div>
           </div>
