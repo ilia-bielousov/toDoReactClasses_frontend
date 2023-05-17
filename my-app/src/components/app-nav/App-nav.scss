@@ -1,0 +1,39 @@
+@import '../settings';
+
+.nav {
+  background-color: $bg_tabs;
+  
+  &-tabs {
+    border: none;
+  }
+
+  &-link {
+    color: $text_noactive;
+    text-align: center;
+    font-size: 32px;
+
+    @media (max-width: 576px) {
+      font-size: 28px;
+    }
+  }
+
+  &-tabs &-link {
+    margin-bottom: 0px;
+    border: none;
+    outline: none;
+  }
+
+  &-link:hover {
+    color: $orange;
+  }
+
+  &-link.active {
+    border-color: $orange !important;
+    border-bottom: 3px solid $orange;
+  }
+
+  &-link.active {
+    color: $text_main;
+    font-weight: 800;
+  }
+}
