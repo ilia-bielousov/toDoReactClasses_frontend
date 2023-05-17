@@ -1,7 +1,7 @@
 import { Component } from 'react';
-import AppHeader from '../app-header/App-header';
-import AppNav from '../app-nav/App-nav';
-import AppForm from '../app-form/App-form';
+import AppHeader from '../appHeader/AppHeader';
+import AppNav from '../appNav/AppNav';
+import AppForm from '../appForm/AppForm';
 import './App.scss';
 
 class App extends Component {

@@ -1,6 +1,6 @@
 import { Component } from "react";
 import { Container, Row, Nav } from "react-bootstrap";
-import './App-nav.scss';
+import './AppNav.scss';
 
 class AppNav extends Component {
   constructor(props) {

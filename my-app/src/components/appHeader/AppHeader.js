@@ -1,7 +1,7 @@
 import { Component } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import logo from './../../assets/images/logo.png';
-import './App-header.scss';
+import './AppHeader.scss';
 
 class AppHeader extends Component {
   constructor(props) {
