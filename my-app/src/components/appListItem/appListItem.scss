@@ -1,0 +1,45 @@
+@import '../settings';
+
+.list {
+
+  &-group-item {
+    background-color: $bg_main !important;
+    border: none;
+  }
+
+  &__item {
+    margin-bottom: 25px;
+
+    @media (max-width: 576px) {
+      margin-bottom: 15px;
+    }
+  }
+
+  &__done {
+    justify-self: center;
+  }
+  
+  &__text {
+    margin-bottom: 0px;
+    padding: 15px;
+    border-bottom: 2px solid $bg_btn;
+    font-size: 24px;
+  
+    @media (max-width: 768px) {
+      font-size: 18px;
+    }
+    
+    @media (max-width: 576px) {
+      font-size: 16px;
+    }
+  }
+  
+  &__delete {
+    justify-self: center;
+  }
+  
+  &__done,
+  &__delete {
+    cursor: pointer;
+  }
+}

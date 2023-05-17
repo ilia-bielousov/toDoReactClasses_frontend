@@ -14,7 +14,7 @@ class App extends Component {
   //   // }
   // }
 
-  render() {
+  render() { // ПЕРЕДЕЛАТЬ СТРУКТУРА
     return (
       <div className="App">
         <AppHeader />
