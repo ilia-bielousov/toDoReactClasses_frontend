@@ -1,0 +1,16 @@
+// colors
+$bg_main: #F1ECE6;
+$bg_tabs: #F3F3F3;
+$bg_btn: #76B7CD;
+$text_main: #323232;
+$text_noactive: #969696;
+$text_strike: #C2C2C2;
+$orange: #D98326;
+
+//fonts 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+html,
+body {
+  font-family: 'Poppins', sans-serif;
+}

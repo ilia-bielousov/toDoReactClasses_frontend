@@ -1,0 +1,18 @@
+@import '../settings';
+
+.header {
+  background-color: $bg_main;
+}
+
+.logo {
+
+  &__link {
+    width: 50%;
+  }
+
+  &__image {
+    width: 50%;
+    height: auto;
+    margin: 0px auto;
+  }
+}

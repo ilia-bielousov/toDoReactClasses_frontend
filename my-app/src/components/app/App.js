@@ -1,21 +1,20 @@
 import { Component } from 'react';
-import './App.css';
+import AppHeader from '../app-header/App-header';
+import './App.scss';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
+  // constructor(props) {
+  //   super(props);
 
-    this.state = {
-      data: []
-    }
-  }
+  //   // this.state = {
+  //   //   data: []
+  //   // }
+  // }
 
   render() {
     return (
       <div className="App">
-        <header className="test">
-          create react
-        </header>
+        <AppHeader />
       </div>
     );
   }
