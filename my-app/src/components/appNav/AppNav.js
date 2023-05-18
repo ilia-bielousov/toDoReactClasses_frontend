@@ -3,9 +3,9 @@ import { Container, Row, Nav } from "react-bootstrap";
 import './AppNav.scss';
 
 class AppNav extends Component {
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
   render() {
     return (

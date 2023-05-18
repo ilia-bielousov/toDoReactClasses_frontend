@@ -6,21 +6,59 @@ import AppList from '../appList/AppList';
 import './App.scss';
 
 class App extends Component {
-  // constructor(props) {
-  //   super(props);
+  constructor(props) {
+    super(props);
 
-  //   // this.state = {
-  //   //   data: []
-  //   // }
-  // }
+    this.state = {
+      data: [[{
+        name: 'Personal',
+        checked: false,
+        value: '',
+        deleted: false,
+        id: 0
+      },
+      {
+        name: 'Personal',
+        checked: false,
+        value: '',
+        deleted: false,
+        id: 1
+      },
+      {
+        name: 'Personal',
+        checked: false,
+        value: '',
+        deleted: false,
+        id: 2
+      }],
+      [{
+        name: 'Professional',
+        checked: false,
+        value: '',
+        deleted: false,
+        id: 0
+      },
+      {
+        name: 'Professional',
+        checked: false,
+        value: '',
+        deleted: false,
+        id: 1
+      }]]
+    }
+  }
 
-  render() { // ПЕРЕДЕЛАТЬ СТРУКТУРА
+  render() {
+    const {data} = this.state
+
     return (
       <div className="App">
         <AppHeader />
         <AppNav />
-        <AppForm />
-        <AppList />
+        <main className='main'>
+          <AppForm />
+          <AppList data={data}/>
+        </main>
       </div>
     );
   }
