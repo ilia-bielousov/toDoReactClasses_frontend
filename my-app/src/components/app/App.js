@@ -99,7 +99,6 @@ class App extends Component {
     });
   }
 
-
   deleteItem = (id) => {
     if (this.state.ourChoose) {
       this.setState(({ dataPersonal }) => {
