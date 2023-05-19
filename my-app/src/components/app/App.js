@@ -68,7 +68,7 @@ class App extends Component {
       if (nav.getAttribute('Personal')) {
         return {
           ourChoose: !ourChoose
-        } 
+        }
       } else {
         return {
           ourChoose: !ourChoose
@@ -77,12 +77,21 @@ class App extends Component {
     });
   }
 
+
   deleteItem = (id) => {
-    this.setState(({ data }) => {
-      return {
-        data: data.filter(item => item.id !== id)
-      }
-    });
+    if (this.state.ourChoose) {
+      this.setState(({ dataPersonal }) => {
+        return {
+          dataPersonal: dataPersonal.filter(item => item.id !== id)
+        }
+      });
+    } else {
+      this.setState(({ dataProfessional }) => {
+        return {
+          dataProfessional: dataProfessional.filter(item => item.id !== id)
+        }
+      });
+    }
   }
 
   render() {
@@ -91,7 +100,7 @@ class App extends Component {
     return (
       <div className="App">
         <AppHeader />
-        <AppNav onChoose={this.chooseDataBase}/>
+        <AppNav onChoose={this.chooseDataBase} />
         <main className='main'>
           <AppForm />
           <AppList
