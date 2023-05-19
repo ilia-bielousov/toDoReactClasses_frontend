@@ -14,53 +14,54 @@ class App extends Component {
       dataPersonal: [{
         name: 'Personal',
         checked: false,
-        value: '',
+        value: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, placeat?',
         deleted: false,
         id: 0
       },
       {
         name: 'Personal',
         checked: false,
-        value: '',
+        value: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, placeat?',
         deleted: false,
         id: 1
       },
       {
         name: 'Personal',
         checked: false,
-        value: '',
+        value: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, placeat?',
         deleted: false,
         id: 2
       },
       {
         name: 'Personal',
         checked: false,
-        value: '',
+        value: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, placeat?',
         deleted: false,
         id: 3
       },
       {
         name: 'Personal',
         checked: true,
-        value: '',
+        value: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, placeat?',
         deleted: false,
         id: 4
       }],
       dataProfessional: [{
         name: 'Professional',
         checked: false,
-        value: '',
+        value: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, placeat?',
         deleted: false,
         id: 0
       },
       {
         name: 'Professional',
         checked: false,
-        value: '',
+        value: 'dsadsad',
         deleted: false,
         id: 1
       }]
-    }
+    };
+    this.maxId = 5;
   }
 
   checkItem = (id) => {
@@ -99,6 +100,28 @@ class App extends Component {
     });
   }
 
+  addItem = (text) => {
+    if (this.state.ourChoose) {
+      this.setState(({ dataPersonal }) => {
+        const newNote = { checked: false, deleted: false, id: this.maxId++, name: 'Personal', value: text };
+  
+        const newData = [...dataPersonal, newNote];
+        return {
+          dataPersonal: newData
+        }
+      });
+    } else {
+      this.setState(({ dataProfessional }) => {
+        const newNote = { checked: false, deleted: false, id: this.maxId++, name: 'Personal', value: text };
+  
+        const newData = [...dataProfessional, newNote];
+        return {
+          dataProfessional: newData
+        }
+      });
+    }
+  }
+
   deleteItem = (id) => {
     if (this.state.ourChoose) {
       this.setState(({ dataPersonal }) => {
@@ -123,7 +146,7 @@ class App extends Component {
         <AppHeader />
         <AppNav onChoose={this.chooseDataBase} />
         <main className='main'>
-          <AppForm />
+          <AppForm addItem={this.addItem}/>
           <AppList
             data={ourChoose ? dataPersonal : dataProfessional}
             deleteItem={this.deleteItem}
