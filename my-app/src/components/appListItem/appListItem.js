@@ -8,38 +8,19 @@ import './appListItem.scss'
 class AppListItem extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      checkNote: false,
-      del: false
-    }
-  }
-
-  checkNote = () => {
-    this.setState(({ checkNote }) => {
-      return {
-        checkNote: !checkNote
-      }
-    });
   }
 
   render() {
-    const { checkNote, del } = this.state;
+    const { name, checked, deleted, id} = this.props;
 
     let num = 0.3;
-
-    if (del) {
-      num = 1;
-    } else {
-      num = 0.3
-    }
 
     return (
       <>
         <ListGroupItem as="li" className="list__item d-flex align-items-center">
           <Col sm={1} xs={2} className="d-grid">
-            <span className="list__done" onClick={this.checkNote}>
-              <img src={checkNote ? markedNote : nomarkedNote} alt="note" />
+            <span className="list__done">
+              <img src={markedNote} alt="note" />
             </span>
           </Col>
           <Col sm={10} xs={8} className="d-grid">
@@ -47,8 +28,8 @@ class AppListItem extends Component {
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates, maxime.
             </p>
           </Col>
-          <Col sm={1} xs={2} className="d-grid" onClick={this.test2}>
-            <span className="list__delete" onMouseEnter={this.test2} onMouseLeave={this.test2}>
+          <Col sm={1} xs={2} className="d-grid">
+            <span className="list__delete" onClick={this.props.deleteItem}>
               <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g opacity={num} clipPath="url(#clip0_116_185)">
                   <path

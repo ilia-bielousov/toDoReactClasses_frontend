@@ -11,16 +11,16 @@ class AppList extends Component {
   render() {
     const ourData = this.props;
 
-    const items = ourData.data[0].map(item => {
+    const items = ourData.data.map(item => {
       const { id, ...itemProps } = item
-
+      
       return (
-        <AppListItem key={id}
-          {...itemProps} />
+        <AppListItem 
+          key={id}
+          {...itemProps} 
+          deleteItem={() => this.props.deleteItem(id)}/>
       )
     });
-
-    console.log(ourData);
 
     return (
       <Container>

@@ -10,7 +10,8 @@ class App extends Component {
     super(props);
 
     this.state = {
-      data: [[{
+      ourChoose: true,
+      dataPersonal: [{
         name: 'Personal',
         checked: false,
         value: '',
@@ -30,8 +31,22 @@ class App extends Component {
         value: '',
         deleted: false,
         id: 2
+      },
+      {
+        name: 'Personal',
+        checked: false,
+        value: '',
+        deleted: false,
+        id: 3
+      },
+      {
+        name: 'Personal',
+        checked: true,
+        value: '',
+        deleted: false,
+        id: 4
       }],
-      [{
+      dataProfessional: [{
         name: 'Professional',
         checked: false,
         value: '',
@@ -44,20 +59,45 @@ class App extends Component {
         value: '',
         deleted: false,
         id: 1
-      }]]
+      }]
     }
   }
 
+  chooseDataBase = (nav) => {
+    this.setState(({ ourChoose }) => {
+      if (nav.getAttribute('Personal')) {
+        return {
+          ourChoose: !ourChoose
+        } 
+      } else {
+        return {
+          ourChoose: !ourChoose
+        }
+      }
+    });
+  }
+
+  deleteItem = (id) => {
+    this.setState(({ data }) => {
+      return {
+        data: data.filter(item => item.id !== id)
+      }
+    });
+  }
+
   render() {
-    const {data} = this.state
+    const { ourChoose, dataPersonal, dataProfessional } = this.state;
 
     return (
       <div className="App">
         <AppHeader />
-        <AppNav />
+        <AppNav onChoose={this.chooseDataBase}/>
         <main className='main'>
           <AppForm />
-          <AppList data={data}/>
+          <AppList
+            data={ourChoose ? dataPersonal : dataProfessional}
+            deleteItem={this.deleteItem}
+          />
         </main>
       </div>
     );
