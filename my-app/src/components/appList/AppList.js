@@ -12,13 +12,14 @@ class AppList extends Component {
     const ourData = this.props;
 
     const items = ourData.data.map(item => {
-      const { id, ...itemProps } = item
+      const { id, ...itemProps } = item;
       
       return (
         <AppListItem 
           key={id}
           {...itemProps} 
-          deleteItem={() => this.props.deleteItem(id)}/>
+          deleteItem={() => this.props.deleteItem(id)}
+          checkItem={() => this.props.checkItem(id)}/>
       )
     });
 

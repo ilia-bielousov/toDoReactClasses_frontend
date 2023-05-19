@@ -11,7 +11,7 @@ class AppListItem extends Component {
   }
 
   render() {
-    const { name, checked, deleted, id} = this.props;
+    const { name, checked, deleted, id, deleteItem, checkItem} = this.props;
 
     let num = 0.3;
 
@@ -19,8 +19,8 @@ class AppListItem extends Component {
       <>
         <ListGroupItem as="li" className="list__item d-flex align-items-center">
           <Col sm={1} xs={2} className="d-grid">
-            <span className="list__done">
-              <img src={markedNote} alt="note" />
+            <span className="list__done" onClick={checkItem}>
+              <img src={checked ? markedNote : nomarkedNote} alt="note" />
             </span>
           </Col>
           <Col sm={10} xs={8} className="d-grid">
@@ -29,7 +29,7 @@ class AppListItem extends Component {
             </p>
           </Col>
           <Col sm={1} xs={2} className="d-grid">
-            <span className="list__delete" onClick={this.props.deleteItem}>
+            <span className="list__delete" onClick={deleteItem}>
               <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g opacity={num} clipPath="url(#clip0_116_185)">
                   <path

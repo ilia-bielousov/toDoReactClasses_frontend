@@ -63,6 +63,28 @@ class App extends Component {
     }
   }
 
+  checkItem = (id) => {
+    if (this.state.ourChoose) {
+      this.setState(({ dataPersonal }) => ({
+        dataPersonal: dataPersonal.map(item => {
+          if (item.id === id) {
+            return { ...item, checked: !item.checked }
+          }
+          return item;
+        })
+      }));
+    } else {
+      this.setState(({ dataProfessional }) => ({
+        dataProfessional: dataProfessional.map(item => {
+          if (item.id === id) {
+            return { ...item, checked: !item.checked }
+          }
+          return item;
+        })
+      }));
+    }
+  }
+
   chooseDataBase = (nav) => {
     this.setState(({ ourChoose }) => {
       if (nav.getAttribute('Personal')) {
@@ -106,6 +128,7 @@ class App extends Component {
           <AppList
             data={ourChoose ? dataPersonal : dataProfessional}
             deleteItem={this.deleteItem}
+            checkItem={this.checkItem}
           />
         </main>
       </div>
