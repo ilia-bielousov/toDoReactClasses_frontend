@@ -1,6 +1,6 @@
 import { Component } from "react";
 import { Container, Row, ListGroup } from "react-bootstrap";
-import AppListItem from "../appListItem/appListItem";
+import AppListItem from "../appListItem/AppListItem";
 import './AppList.scss';
 
 class AppList extends Component {

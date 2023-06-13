@@ -2,7 +2,7 @@ import { Component } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import AppHeader from '../appHeader/AppHeader';
 import Main from '../../pages/main';
-import Login from '../../pages/login';
+import Login from '../../pages/login/login';
 import Registration from '../../pages/registration';
 import AppNav from '../appNav/AppNav';
 
