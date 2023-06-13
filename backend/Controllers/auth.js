@@ -12,10 +12,26 @@ export const registration = async (req, res) => {
     const user = new User({ username, password, email });
     user.save();
 
-    res.status(200).json({ message: 'Пользователь успешно зарегистрирован' });
+    return res.status(200).json({ message: 'Пользователь успешно зарегистрирован' });
   } catch (error) {
     res.status(400).json({ message: 'Ошибка регистрации'});
 
     console.log(error);
+  }
+}
+
+export const login = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    const user = await User.findOne({ email });
+
+    if (!user) {
+      return res.status(404).json({ message: 'Пользователь не найден' });
+    }
+
+    return res.status(200).json( { user });
+  } catch(error) {
+    res.status(400).json({ message: 'Что-то пошло не так' });
   }
 }

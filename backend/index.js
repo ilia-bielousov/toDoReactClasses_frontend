@@ -1,7 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 
-import { registration } from "./Controllers/auth.js";
+import { registration, login } from "./Controllers/auth.js";
 
 const app = express();
 const port = 5000;
@@ -13,6 +13,7 @@ mongoose.connect('mongodb+srv://user:user@cluster0.haueao7.mongodb.net/toDo')
 app.use(express.json());
 
 app.post('/registration', registration);
+app.post('/login', login);
 
 app.listen(port, () => {
   try {
