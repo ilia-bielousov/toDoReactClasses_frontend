@@ -7,7 +7,7 @@ const webpack = require('webpack-stream');
 const dir = './app/assets/'
 
 function Styles() {
-  return src(`${dir}sass/main.scss`)
+  return src(`${dir}sass/*.scss`)
     .pipe(scss())
     .pipe(dest(`${dir}css`))
 }
