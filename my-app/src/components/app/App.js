@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import AppHeader from '../appHeader/AppHeader';
 import Main from '../../pages/main';
 import Login from '../../pages/login/login';
-import Registration from '../../pages/registration';
+import Registration from '../../pages/registration/registration';
 import AppNav from '../appNav/AppNav';
 
 class App extends Component {
