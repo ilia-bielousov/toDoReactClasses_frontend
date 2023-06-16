@@ -1,9 +1,14 @@
-import mongoose, { model } from "mongoose";
+import { Schema, model } from "mongoose";
 
-const Note = mongoose.Schema({
-  note: {
+const Note = new Schema({
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
+  },
+  text: {
     type: String,
-    default: 'myNote'
+    required: true
   }
 }, {
   timestamps: true
