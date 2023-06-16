@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import logo from './../../assets/images/logo.png';
 import './AppHeader.scss';
@@ -25,6 +25,16 @@ class AppHeader extends Component {
                 </div>
               </div>
             </Col>
+          </Row>
+          <Row>
+            <Nav variant="tabs" className="test">
+              <Nav.Item>
+                <Link to="/login" className="header__link">Login</Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Link to="registration" className="header__link">Registration</Link>
+              </Nav.Item>
+            </Nav>
           </Row>
         </Container>
       </header>

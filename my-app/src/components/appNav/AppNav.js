@@ -1,5 +1,4 @@
 import { Component } from "react";
-import { Link } from "react-router-dom";
 import { Container, Row, Nav } from "react-bootstrap";
 import './AppNav.scss';
 
@@ -14,16 +13,6 @@ class AppNav extends Component {
     return (
       <div className="nav">
         <Container>
-          <Row>
-            <Nav variant="tabs">
-              <Nav.Item className="col-12 col-sm-6">
-                <Link to="/login">Login</Link>
-              </Nav.Item>
-              <Nav.Item className="col-12 col-sm-6">
-                <Link to="registration">Registration</Link>
-              </Nav.Item>
-            </Nav>
-          </Row>
           <Row>
             <Nav variant="tabs" defaultActiveKey="Personal">
               <Nav.Item className="col-12 col-sm-6" onClick={this.switch}>

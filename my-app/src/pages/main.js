@@ -1,5 +1,6 @@
 import { Component } from "react";
 import AppForm from "../components/appForm/AppForm";
+import AppNav from "../components/appNav/AppNav";
 import AppList from "../components/appList/AppList";
 
 class Main extends Component {
@@ -140,8 +141,10 @@ class Main extends Component {
 
     return (
       <main className='main'>
-        <AppForm 
-        addItem={this.addItem} 
+        <AppNav
+          onChoose={this.chooseDataBase} />
+        <AppForm
+          addItem={this.addItem}
         />
         <AppList
           data={ourChoose ? dataPersonal : dataProfessional}

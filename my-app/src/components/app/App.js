@@ -11,7 +11,6 @@ class App extends Component {
     return (
       <>
         <AppHeader />
-        <AppNav onChoose={this.chooseDataBase} />
         <Routes>
           <Route path='/' element={<Main />} />
           <Route path='/login' element={<Login />} />

@@ -1,7 +1,8 @@
 @import '../settings';
 
-.header {
-  background-color: $bg_main;
+.header,
+.test {
+  background-color: $bg_main !important;
 }
 
 .logo {
