@@ -26,7 +26,7 @@ export const registration = async (req, res) => {
       return res.status(400).json({ message: 'User with such username already exists', success: false });
     }
 
-    const hashPassword = bcryptjs.hashSync(password, 5);
+    const hashPassword = bcryptjs.hashSync(password, 2);
     const user = new User ({ username, password: hashPassword});
 
     user.save();

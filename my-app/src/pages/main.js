@@ -9,18 +9,8 @@ class Main extends Component {
 
     this.state = {
       ourChoose: true,
-      dataPersonal: [{
-        checked: false,
-        value: 'Personal',
-        deleted: false,
-        id: 0
-      }],
-      dataProfessional: [{
-        checked: false,
-        value: 'Professional',
-        deleted: false,
-        id: 0
-      }]
+      dataPersonal: [{ }],
+      dataProfessional: [{ }]
     };
     this.maxId = 0;
   }
@@ -103,15 +93,12 @@ class Main extends Component {
     const { ourChoose, dataPersonal, dataProfessional } = this.state;
     const { logged } = this.props;
 
-    console.log(logged);
-
     return (
       logged ?
         (<main className='main'>
           <AppNav
             onChoose={this.chooseDataBase} />
           <AppForm
-            addItem={this.addItem}
           />
           <AppList
             data={ourChoose ? dataPersonal : dataProfessional}

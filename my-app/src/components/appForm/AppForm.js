@@ -11,6 +11,23 @@ class AppForm extends Component {
     }
   }
 
+  addNote = async (text) => {
+    const note = {
+      text
+    };
+
+    await fetch('http://localhost:5000/add-note', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+        authorization: window.localStorage.getItem('token')
+      },
+      body: JSON.stringify(note)
+    })
+    .then(res => res.json())
+    .then(res => console.log(res));
+  }
+
   newNote = (e) => {
     this.setState({
       text: e.target.value
@@ -19,8 +36,8 @@ class AppForm extends Component {
 
   add = (e) => {
     e.preventDefault();
-    
-    this.props.addItem(this.state.text);
+
+    this.addNote(this.state.text);
   }
 
   render() {

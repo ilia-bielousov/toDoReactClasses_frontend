@@ -1,6 +1,7 @@
 import Note from '../Models/Note.js';
 
 export const addNote = async (req, res) => {
+  console.log(req.body);
   const doc = new Note({
     user: req.userId,
     text: req.body.text
@@ -8,7 +9,7 @@ export const addNote = async (req, res) => {
 
   const note = await doc.save();
 
-  return res.json(note);
+  return res.json({ succes: true});
 }
 
 export const getAllNotes = async (req, res) => {

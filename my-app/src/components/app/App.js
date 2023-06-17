@@ -31,6 +31,17 @@ class App extends Component {
     });
   }
 
+  getAllNotes = async () => {
+    await fetch('http://localhost:5000/notes', {
+      method: 'GET',
+      headers: {
+        authorization: window.localStorage.getItem('token')
+      },
+    })
+      .then(res => res.json())
+      .then(res => console.log(res));
+  }
+
   componentDidMount() {
     if (window.localStorage.getItem('token')) {
       this.setState({
@@ -39,12 +50,18 @@ class App extends Component {
     }
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.logged != this.state.logged) {
+      this.getAllNotes();
+    }
+  }
+
   render() {
     return (
       <>
         <AppHeader logout={this.logout} logged={this.state.logged} />
         <Routes>
-          <Route path='/' element={<Main logged={this.state.logged} />} />
+          <Route path='/' element={<Main logged={this.state.logged} addNote={this.addNote} />} />
           <Route path='/login' element={<Login logging={this.logging} logged={this.state.logged} />} />
           <Route path='/registration' element={<Registration />} />
         </Routes>

@@ -5,7 +5,7 @@ export default (req, res, next) => {
 
   if (token) {
     try {
-      const decoded = jsonwebtoken.verify(token, 'secret_key');
+      const decoded = jsonwebtoken.verify(token, 'secret');
       req.userId = decoded.id;
       next();
     } catch(err) {
