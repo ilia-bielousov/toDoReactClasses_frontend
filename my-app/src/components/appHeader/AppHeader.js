@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Container, Row, Col, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import logo from './../../assets/images/logo.png';
@@ -7,7 +6,7 @@ import './AppHeader.scss';
 const AppHeader = (props) => {
 
     const { logged }= props;
-    // console.log(props);
+
     return (
       <header className="header">
         <Container>

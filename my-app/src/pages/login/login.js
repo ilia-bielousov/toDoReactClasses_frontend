@@ -46,8 +46,7 @@ class Login extends Component {
   }
 
   saveToken = async (res) => {
-    window.localStorage.setItem('token', res.token);
-    this.props.logging();
+    this.props.logging(res);
   }
   
   render() {

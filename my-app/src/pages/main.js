@@ -51,7 +51,7 @@ class Main extends Component {
     this.setState(() => {
       if (nav.getAttribute('data-personal')) {
         return {
-           ourChoose: true
+          ourChoose: true
         }
       } else {
         return {
@@ -101,20 +101,27 @@ class Main extends Component {
 
   render() {
     const { ourChoose, dataPersonal, dataProfessional } = this.state;
+    const { logged } = this.props;
+
+    console.log(logged);
 
     return (
-      <main className='main'>
-        <AppNav
-          onChoose={this.chooseDataBase} />
-        <AppForm
-          addItem={this.addItem}
-        />
-        <AppList
-          data={ourChoose ? dataPersonal : dataProfessional}
-          deleteItem={this.deleteItem}
-          checkItem={this.checkItem}
-        />
-      </main>
+      logged ?
+        (<main className='main'>
+          <AppNav
+            onChoose={this.chooseDataBase} />
+          <AppForm
+            addItem={this.addItem}
+          />
+          <AppList
+            data={ourChoose ? dataPersonal : dataProfessional}
+            deleteItem={this.deleteItem}
+            checkItem={this.checkItem}
+          />
+        </main>) : 
+        (<main className='main'>
+            opis
+          </main>)
     );
   }
 }
