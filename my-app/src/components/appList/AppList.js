@@ -4,9 +4,6 @@ import AppListItem from "../appListItem/appListItem.js";
 import './AppList.scss';
 
 class AppList extends Component {
-  // constructor(props) {
-  //   super(props);
-  // }
 
   render() {
     const ourData = this.props;

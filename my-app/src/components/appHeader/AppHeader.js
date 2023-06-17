@@ -1,15 +1,13 @@
-import { Component } from "react";
+import { useEffect, useState } from "react";
 import { Container, Row, Col, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import logo from './../../assets/images/logo.png';
 import './AppHeader.scss';
 
-class AppHeader extends Component {
-  constructor(props) {
-    super(props);
-  }
+const AppHeader = (props) => {
 
-  render() {
+    const { logged }= props;
+    // console.log(props);
     return (
       <header className="header">
         <Container>
@@ -26,20 +24,30 @@ class AppHeader extends Component {
               </div>
             </Col>
           </Row>
-          <Row>
-            <Nav variant="tabs" className="test">
-              <Nav.Item>
-                <Link to="/login" className="header__link">Login</Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Link to="registration" className="header__link">Registration</Link>
-              </Nav.Item>
-            </Nav>
-          </Row>
+          {!logged ?
+            (
+              <Row>
+                <Nav variant="tabs" className="test">
+                  <Nav.Item>
+                    <Link to="/login" className="header__link">Login</Link>
+                  </Nav.Item>
+                  <Nav.Item>
+                    <Link to="/registration" className="header__link">Registration</Link>
+                  </Nav.Item>
+                </Nav>
+              </Row>
+            ) : (
+              <Row>
+                <Nav variant="tabs" className="test">
+                  <Nav.Item>
+                    <Link to="/" onClick={props.logout} className="header__link">Logout</Link>
+                  </Nav.Item>
+                </Nav>
+              </Row>
+            )}
         </Container>
       </header>
     );
-  }
 }
 
 export default AppHeader;

@@ -10,56 +10,19 @@ class Main extends Component {
     this.state = {
       ourChoose: true,
       dataPersonal: [{
-        name: 'Personal',
         checked: false,
-        value: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, placeat?',
+        value: 'Personal',
         deleted: false,
         id: 0
-      },
-      {
-        name: 'Personal',
-        checked: false,
-        value: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, placeat?',
-        deleted: false,
-        id: 1
-      },
-      {
-        name: 'Personal',
-        checked: false,
-        value: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, placeat?',
-        deleted: false,
-        id: 2
-      },
-      {
-        name: 'Personal',
-        checked: false,
-        value: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, placeat?',
-        deleted: false,
-        id: 3
-      },
-      {
-        name: 'Personal',
-        checked: true,
-        value: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, placeat?',
-        deleted: false,
-        id: 4
       }],
       dataProfessional: [{
-        name: 'Professional',
         checked: false,
-        value: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, placeat?',
+        value: 'Professional',
         deleted: false,
         id: 0
-      },
-      {
-        name: 'Professional',
-        checked: false,
-        value: 'dsadsad',
-        deleted: false,
-        id: 1
       }]
     };
-    this.maxId = 5;
+    this.maxId = 0;
   }
 
   checkItem = (id) => {
@@ -85,14 +48,14 @@ class Main extends Component {
   }
 
   chooseDataBase = (nav) => {
-    this.setState(({ ourChoose }) => {
-      if (nav.getAttribute('Personal')) {
+    this.setState(() => {
+      if (nav.getAttribute('data-personal')) {
         return {
-          ourChoose: !ourChoose
+           ourChoose: true
         }
       } else {
         return {
-          ourChoose: !ourChoose
+          ourChoose: false
         }
       }
     });
@@ -101,7 +64,7 @@ class Main extends Component {
   addItem = (text) => {
     if (this.state.ourChoose) {
       this.setState(({ dataPersonal }) => {
-        const newNote = { checked: false, deleted: false, id: this.maxId++, name: 'Personal', value: text };
+        const newNote = { checked: false, deleted: false, id: this.maxId + 1, value: text };
 
         const newData = [...dataPersonal, newNote];
         return {
@@ -110,7 +73,7 @@ class Main extends Component {
       });
     } else {
       this.setState(({ dataProfessional }) => {
-        const newNote = { checked: false, deleted: false, id: this.maxId++, name: 'Personal', value: text };
+        const newNote = { checked: false, deleted: false, id: this.maxId + 1, value: text };
 
         const newData = [...dataProfessional, newNote];
         return {

@@ -20,7 +20,7 @@ app.post('/registration', [
   check('username', 'Имя пользователя не может быть пустым и минимум 3 символа').notEmpty().isLength({ min: 3, max: 10 }),
   check('password', 'Пароль делжен быть больше 4 и меньше 10').isLength({ min: 4, max: 10 })
 ], registration);
-app.post('/login', chekAuth, login);
+app.post('/login', login);
 
 app.post('/add-note', chekAuth, addNote);
 app.get('/notes', chekAuth, getAllNotes);
