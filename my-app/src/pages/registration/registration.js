@@ -45,11 +45,19 @@ class Registration extends Component {
   }
 
   responsReg = async (res) => {
-    alert(`${res.message} and now you can logging.`);
+    if (res.success) {
+      alert(`${res.message} and now you can logging.`);
 
-    this.setState({
-      next: true
-    })
+      this.setState({
+        next: true
+      });
+    } else {
+      alert(`${res.message} please try again`);
+      this.setState({
+        username: '',
+        password: '',
+      })
+    }
   }
 
   render() {
@@ -65,11 +73,11 @@ class Registration extends Component {
               <h3 className="registartion__title">Registration</h3>
               <Form.Group className="registration__email mb-2">
                 <Form.Label>Username</Form.Label>
-                <Form.Control type="text" className="mb-2" placeholder="Username" onChange={(e) => this.changeUsername(e)} />
+                <Form.Control type="text" value={this.state.username} className="mb-2" placeholder="Username" onChange={(e) => this.changeUsername(e)} />
               </Form.Group>
               <Form.Group className="form-group registration__inner registration__password">
                 <Form.Label>Password</Form.Label>
-                <Form.Control type="password" className="mb-2" placeholder="Password" onChange={(e) => this.changePassword(e)} />
+                <Form.Control type="password" value={this.state.password} className="mb-2" placeholder="Password" onChange={(e) => this.changePassword(e)} />
               </Form.Group>
               <Button type="submit">Submit</Button>
             </Form>

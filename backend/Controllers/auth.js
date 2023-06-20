@@ -16,7 +16,7 @@ export const registration = async (req, res) => {
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
-      return res.status(400).json({ message: 'Error registration', errors });
+      return res.status(400).json({ message: 'Error registration', success: false });
     }
 
     const { username, password } = req.body;
