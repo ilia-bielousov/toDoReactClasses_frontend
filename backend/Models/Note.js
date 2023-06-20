@@ -13,9 +13,12 @@ const Note = new Schema({
   profile: {
     type: String,
     required: true
+  },
+  checked: {
+    type: Boolean,
+    default: false,
+    required: true
   }
-}, {
-  timestamps: true
 });
 
 export default model('Note', Note);

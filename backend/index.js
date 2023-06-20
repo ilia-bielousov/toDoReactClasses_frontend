@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import cors from 'cors';
 import { check } from 'express-validator';
 import { registration, login } from "./Controllers/auth.js";
-import { addNote, getAllNotes, deleteNote } from "./Controllers/note.js";
+import { addNote, getAllNotes, deleteNote, updateChecked } from "./Controllers/note.js";
 import chekAuth from "./chekAuth.js";
 
 const app = express();
@@ -25,6 +25,7 @@ app.post('/login', login);
 app.post('/add-note', chekAuth, addNote);
 app.get('/notes', chekAuth, getAllNotes);
 app.delete('/delete-note', chekAuth, deleteNote);
+app.patch('/update-note', chekAuth, updateChecked);
 
 app.listen(port, () => {
   try {

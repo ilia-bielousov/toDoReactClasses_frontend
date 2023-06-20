@@ -65,7 +65,7 @@ class App extends Component {
 
   getDB = async (res) => {
     res = res.map(item => {
-      return { ...item, checked: false }
+      return { ...item }
     });
 
     const newData = [...res];
@@ -91,10 +91,28 @@ class App extends Component {
     }
   }
 
+  updateCheckItem = async (id, checked) => {
+    const note = {
+      _id: id,
+      checked
+    }
+
+    await fetch('http://localhost:5000/update-note', {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+        authorization: window.localStorage.getItem('token')
+      },
+      body: JSON.stringify(note)
+    })
+      .then(res => res.json());
+  }
+
   checkItem = (id) => {
     this.setState(({ notes }) => ({
       notes: notes.map(item => {
         if (item._id === id) {
+          this.updateCheckItem(id, !item.checked);
           return { ...item, checked: !item.checked }
         }
         return item;

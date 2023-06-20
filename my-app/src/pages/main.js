@@ -71,16 +71,12 @@ class Main extends Component {
               <p className="main__text">
                 Ten projekt nie tylko demonstruje moją ekspertyzę w zakresie front-endu i back-endu, ale także pokazuje moją zdolność do rozumienia i stosowania nowoczesnych narzędzi i technologii. Jestem przekonany, że ten projekt jest przykładem mojej gotowości zawodowej i mojej pasji do tworzenia wysokiej jakości aplikacji internetowych.
               </p>
-              <p className="main__text">
-                Jeśli są Państwo zainteresowani szczegółami lub chcielibyście ocenić mój projekt osobiście, proszę o kontakt.
-              </p>
               <p className="main__text py-5">
                 <b>Dziękuję</b> za odwiedzenie głównej strony i mam nadzieję, że spodoba się Państwu mój projekt!
               </p>
 
               <p className="main__text">
-              P.S. testowe dane do logowania: <b>username: test, password: test.</b>
-              <br /> lub zapraszam do założenia konta
+              P.S. testowe dane do logowania: <b>username: test password: test </b> lub zapraszam do założenia konta
               </p>
             </Row>
           </Container>
