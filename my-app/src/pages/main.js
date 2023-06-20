@@ -28,14 +28,15 @@ class Main extends Component {
 
 
   render() {
-    const { logged } = this.props;
-    const { notes } = this.props
+    const { logged, notes } = this.props;
 
     return (
       logged ?
         (<main className='main'>
           <AppNav
-            onChoose={this.chooseDataBase} />
+            onChoose={this.chooseDataBase} 
+            ourChoose={this.state.ourChoose}
+            />
           <AppForm
             onChoose={this.state.ourChoose}
           />

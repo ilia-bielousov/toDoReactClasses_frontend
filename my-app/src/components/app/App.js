@@ -40,7 +40,7 @@ class App extends Component {
     })
       .then(res => res.json())
       .then(res => {
-        this.test(res);
+        this.getDB(res);
       });
   }
 
@@ -63,7 +63,7 @@ class App extends Component {
       });
   }
 
-  test = async (res) => {
+  getDB = async (res) => {
     res = res.map(item => {
       return { ...item, checked: false }
     });
@@ -74,7 +74,7 @@ class App extends Component {
       return {
         notes: newData
       }
-    })
+    });
   }
 
   componentDidMount() {
@@ -86,7 +86,7 @@ class App extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.logged != this.state.logged) {
+    if (prevState.logged != this.state.logged && this.state.logged != false) {
       this.getAllNotes();
     }
   }

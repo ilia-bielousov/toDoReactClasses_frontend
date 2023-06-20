@@ -38,9 +38,13 @@ class AppForm extends Component {
   }
 
   add = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
 
     this.addNote(this.state.text);
+
+    this.setState({
+      text: ''
+    });
   }
 
   render() {
@@ -48,7 +52,7 @@ class AppForm extends Component {
       <Container>
         <Form className="main__form py-5" onSubmit={this.add}>
           <Col className="d-flex justify-content-center">
-            <Form.Control className="form-control" type="text" name="text" placeholder="What do you need to do?" onInput={this.newNote} />
+            <Form.Control className="form-control" type="text" name="text" placeholder="What do you need to do?" onInput={this.newNote} value={this.state.text}/>
             <Button className="form__btn" type="submit" variant="primary">
               add
             </Button>

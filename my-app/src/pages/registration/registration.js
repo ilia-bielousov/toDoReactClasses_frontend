@@ -1,5 +1,6 @@
 import { Component } from "react";
 import { Container, Row, Form, Button } from 'react-bootstrap';
+import { Navigate } from "react-router-dom";
 import './registration.scss';
 
 class Registration extends Component {
@@ -8,6 +9,7 @@ class Registration extends Component {
     this.state = {
       username: '',
       password: '',
+      next: false
     }
   }
 
@@ -39,10 +41,22 @@ class Registration extends Component {
       body: JSON.stringify(user)
     })
       .then(res => res.json())
-      .then(res => console.log(res));
+      .then(res => this.responsReg(res));
+  }
+
+  responsReg = async (res) => {
+    alert(`${res.message} and now you can logging.`);
+
+    this.setState({
+      next: true
+    })
   }
 
   render() {
+    if (this.state.next) {
+      return <Navigate to='/' />
+    }
+
     return (
       <div className="registration">
         <Container>
@@ -55,7 +69,7 @@ class Registration extends Component {
               </Form.Group>
               <Form.Group className="form-group registration__inner registration__password">
                 <Form.Label>Password</Form.Label>
-                <Form.Control type="password" className="mb-2"placeholder="Password" onChange={(e) => this.changePassword(e)} />
+                <Form.Control type="password" className="mb-2" placeholder="Password" onChange={(e) => this.changePassword(e)} />
               </Form.Group>
               <Button type="submit">Submit</Button>
             </Form>
