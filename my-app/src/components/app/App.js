@@ -39,7 +39,23 @@ class App extends Component {
       },
     })
       .then(res => res.json())
-      .then(res => console.log(res));
+      .then(res => {
+        this.test(res);
+      });
+  }
+
+   test = async (res) => {
+    res = res.map(item => {
+      return {...item, checked: false}
+    });
+
+    const newData = [...res];
+    
+    this.setState(() => {
+      return {
+        notes: newData
+      }
+    })
   }
 
   componentDidMount() {
@@ -56,12 +72,24 @@ class App extends Component {
     }
   }
 
+  checkItem = (id) => {
+
+    this.setState(({ notes }) => ({
+      notes: notes.map(item => {
+        if (item._id === id) {
+          return { ...item, checked: !item.checked }
+        }
+        return item;
+      })
+    }));
+  }
+
   render() {
     return (
       <>
         <AppHeader logout={this.logout} logged={this.state.logged} />
         <Routes>
-          <Route path='/' element={<Main logged={this.state.logged} addNote={this.addNote} />} />
+          <Route path='/' element={<Main logged={this.state.logged} addNote={this.addNote} notes={this.state.notes} checkItem={this.checkItem}/>} />
           <Route path='/login' element={<Login logging={this.logging} logged={this.state.logged} />} />
           <Route path='/registration' element={<Registration />} />
         </Routes>

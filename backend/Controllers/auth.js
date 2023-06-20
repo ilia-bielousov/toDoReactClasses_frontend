@@ -55,7 +55,7 @@ export const login = async (req, res) => {
     }
 
     const token = generateAccessToken(user._id);
-    return res.json({ ...user._doc, token });
+    return res.json({ ...user._doc, token, success: true });
 
   } catch(error) {
     console.log(error);

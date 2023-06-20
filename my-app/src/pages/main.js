@@ -9,32 +9,10 @@ class Main extends Component {
 
     this.state = {
       ourChoose: true,
-      dataPersonal: [{ }],
-      dataProfessional: [{ }]
+      dataPersonal: [{}],
+      dataProfessional: [{}]
     };
     this.maxId = 0;
-  }
-
-  checkItem = (id) => {
-    if (this.state.ourChoose) {
-      this.setState(({ dataPersonal }) => ({
-        dataPersonal: dataPersonal.map(item => {
-          if (item.id === id) {
-            return { ...item, checked: !item.checked }
-          }
-          return item;
-        })
-      }));
-    } else {
-      this.setState(({ dataProfessional }) => ({
-        dataProfessional: dataProfessional.map(item => {
-          if (item.id === id) {
-            return { ...item, checked: !item.checked }
-          }
-          return item;
-        })
-      }));
-    }
   }
 
   chooseDataBase = (nav) => {
@@ -90,8 +68,9 @@ class Main extends Component {
   }
 
   render() {
-    const { ourChoose, dataPersonal, dataProfessional } = this.state;
+    // const { ourChoose, dataPersonal, dataProfessional } = this.state;
     const { logged } = this.props;
+    const { notes } = this.props
 
     return (
       logged ?
@@ -99,16 +78,17 @@ class Main extends Component {
           <AppNav
             onChoose={this.chooseDataBase} />
           <AppForm
+            onChoose={this.state.ourChoose}
           />
           <AppList
-            data={ourChoose ? dataPersonal : dataProfessional}
+            data={notes}
             deleteItem={this.deleteItem}
-            checkItem={this.checkItem}
+            checkItem={this.props.checkItem}
           />
-        </main>) : 
+        </main>) :
         (<main className='main'>
-            opis
-          </main>)
+          opis
+        </main>)
     );
   }
 }

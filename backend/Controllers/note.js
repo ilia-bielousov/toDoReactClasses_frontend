@@ -4,10 +4,11 @@ export const addNote = async (req, res) => {
   console.log(req.body);
   const doc = new Note({
     user: req.userId,
-    text: req.body.text
+    text: req.body.text,
+    profile: req.body.profile
   });
 
-  const note = await doc.save();
+  await doc.save();
 
   return res.json({ succes: true});
 }

@@ -20,7 +20,7 @@ class AppListItem extends Component {
 
   render() {
     const { over } = this.state;
-    const { checked, deleteItem, checkItem, value } = this.props;
+    const { checked, deleteItem, checkItem, text } = this.props;
 
     return (
       <>
@@ -31,7 +31,7 @@ class AppListItem extends Component {
             </span>
           </Col>
           <Col sm={10} xs={8} className="d-grid">
-            <p className="list__text"> {value}</p>
+            <p className="list__text"> {text}</p>
           </Col>
           <Col sm={1} xs={2} className="d-grid">
             <span className="list__delete" onClick={deleteItem} onMouseEnter={this.changeStyleTrash} onMouseLeave={this.changeStyleTrash}>

@@ -9,6 +9,10 @@ const Note = new Schema({
   text: {
     type: String,
     required: true
+  },
+  profile: {
+    type: String,
+    required: true
   }
 }, {
   timestamps: true

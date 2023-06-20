@@ -12,8 +12,11 @@ class AppForm extends Component {
   }
 
   addNote = async (text) => {
+    const { onChoose }= this.props;
+
     const note = {
-      text
+      text,
+      profile: onChoose ? 'Personal' : 'Professional'
     };
 
     await fetch('http://localhost:5000/add-note', {
