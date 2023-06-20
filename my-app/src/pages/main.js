@@ -2,6 +2,7 @@ import { Component } from "react";
 import AppForm from "../components/appForm/AppForm";
 import AppNav from "../components/appNav/AppNav";
 import AppList from "../components/appList/AppList";
+import { Container, Row } from "react-bootstrap";
 
 class Main extends Component {
   constructor(props) {
@@ -48,7 +49,13 @@ class Main extends Component {
           />
         </main>) :
         (<main className='main'>
-          opis
+          <Container>
+            <Row>
+              <p className="main__text pt-5 pb-5">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Est consequuntur itaque aliquam fugiat iure repudiandae non blanditiis temporibus quidem distinctio, rerum perferendis facere. Voluptatibus libero quisquam, excepturi officia fuga sint obcaecati earum aspernatur consequuntur doloribus dolore nesciunt nemo cupiditate ad, rem ab vel labore ipsam, distinctio tempora quidem harum eius.
+              </p>
+            </Row>
+          </Container>
         </main>)
     );
   }

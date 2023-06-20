@@ -26,19 +26,19 @@ const AppHeader = (props) => {
           {!logged ?
             (
               <Row>
-                <Nav variant="tabs" className="test">
-                  <Nav.Item>
+                <Nav variant="tabs" className="nav_style-bg">
+                  <Nav.Item className="header__nav-item">
                     <Link to="/login" className="header__link">Login</Link>
                   </Nav.Item>
-                  <Nav.Item>
+                  <Nav.Item className="header__nav-item">
                     <Link to="/registration" className="header__link">Registration</Link>
                   </Nav.Item>
                 </Nav>
               </Row>
             ) : (
               <Row>
-                <Nav variant="tabs" className="test">
-                  <Nav.Item>
+                <Nav variant="tabs" className="nav_style-bg">
+                  <Nav.Item className="header__nav-item">
                     <Link to="/" onClick={props.logout} className="header__link">Logout</Link>
                   </Nav.Item>
                 </Nav>
