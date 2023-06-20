@@ -16,7 +16,7 @@ const AppHeader = (props) => {
                 <div className="header__logo logo p-4">
                   <h1 className="logo__text mb-0 d-block text-center">
                     <Link to="./" className="logo__link">
-                      <img src={logo} alt="" className="logo__image d-inline-block" />
+                      <img src={logo} alt="toDo" className="logo__image d-inline-block" />
                     </Link>
                   </h1>
                 </div>
@@ -26,7 +26,7 @@ const AppHeader = (props) => {
           {!logged ?
             (
               <Row>
-                <Nav variant="tabs" className="nav_style-bg">
+                <Nav variant="tabs" className="nav_style-bg d-flex justify-content-center">
                   <Nav.Item className="header__nav-item">
                     <Link to="/login" className="header__link">Login</Link>
                   </Nav.Item>
@@ -37,7 +37,7 @@ const AppHeader = (props) => {
               </Row>
             ) : (
               <Row>
-                <Nav variant="tabs" className="nav_style-bg">
+                <Nav variant="tabs" className="nav_style-bg d-flex justify-content-center">
                   <Nav.Item className="header__nav-item">
                     <Link to="/" onClick={props.logout} className="header__link">Logout</Link>
                   </Nav.Item>
