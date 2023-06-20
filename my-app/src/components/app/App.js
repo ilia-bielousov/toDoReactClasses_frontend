@@ -48,7 +48,7 @@ class App extends Component {
     const note = {
       _id: id
     }
-    
+
     await fetch('http://localhost:5000/delete-note', {
       method: 'DELETE',
       headers: {
@@ -108,7 +108,7 @@ class App extends Component {
         notes: notes.filter(item => item._id !== id)
       }
     });
-    
+
     this.deleteNote(id)
   }
 
@@ -117,7 +117,15 @@ class App extends Component {
       <>
         <AppHeader logout={this.logout} logged={this.state.logged} />
         <Routes>
-          <Route path='/' element={<Main logged={this.state.logged} addNote={this.addNote} notes={this.state.notes} checkItem={this.checkItem} deleteItem={this.deleteItem}/>} />
+          <Route path='/' element={
+            <Main
+              logged={this.state.logged}
+              addNote={this.addNote}
+              notes={this.state.notes}
+              checkItem={this.checkItem}
+              deleteItem={this.deleteItem}
+            />}
+          />
           <Route path='/login' element={<Login logging={this.logging} logged={this.state.logged} />} />
           <Route path='/registration' element={<Registration />} />
         </Routes>

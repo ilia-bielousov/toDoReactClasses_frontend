@@ -9,10 +9,7 @@ class Main extends Component {
 
     this.state = {
       ourChoose: true,
-      dataPersonal: [{}],
-      dataProfessional: [{}]
     };
-    this.maxId = 0;
   }
 
   chooseDataBase = (nav) => {
@@ -29,27 +26,6 @@ class Main extends Component {
     });
   }
 
-  addItem = (text) => {
-    if (this.state.ourChoose) {
-      this.setState(({ dataPersonal }) => {
-        const newNote = { checked: false, deleted: false, id: this.maxId + 1, value: text };
-
-        const newData = [...dataPersonal, newNote];
-        return {
-          dataPersonal: newData
-        }
-      });
-    } else {
-      this.setState(({ dataProfessional }) => {
-        const newNote = { checked: false, deleted: false, id: this.maxId + 1, value: text };
-
-        const newData = [...dataProfessional, newNote];
-        return {
-          dataProfessional: newData
-        }
-      });
-    }
-  }
 
   render() {
     const { logged } = this.props;
@@ -65,6 +41,7 @@ class Main extends Component {
           />
           <AppList
             data={notes}
+            onChoose={this.state.ourChoose}
             deleteItem={this.props.deleteItem}
             checkItem={this.props.checkItem}
           />
