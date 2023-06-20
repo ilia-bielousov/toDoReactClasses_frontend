@@ -44,13 +44,32 @@ class App extends Component {
       });
   }
 
-   test = async (res) => {
+  deleteNote = async (id) => {
+    const note = {
+      _id: id
+    }
+    
+    await fetch('http://localhost:5000/delete-note', {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+        authorization: window.localStorage.getItem('token'),
+      },
+      body: JSON.stringify(note)
+    })
+      .then(res => res.json())
+      .then(res => {
+        console.log(res);
+      });
+  }
+
+  test = async (res) => {
     res = res.map(item => {
-      return {...item, checked: false}
+      return { ...item, checked: false }
     });
 
     const newData = [...res];
-    
+
     this.setState(() => {
       return {
         notes: newData
@@ -73,7 +92,6 @@ class App extends Component {
   }
 
   checkItem = (id) => {
-
     this.setState(({ notes }) => ({
       notes: notes.map(item => {
         if (item._id === id) {
@@ -84,12 +102,22 @@ class App extends Component {
     }));
   }
 
+  deleteItem = (id) => {
+    this.setState(({ notes }) => {
+      return {
+        notes: notes.filter(item => item._id !== id)
+      }
+    });
+    
+    this.deleteNote(id)
+  }
+
   render() {
     return (
       <>
         <AppHeader logout={this.logout} logged={this.state.logged} />
         <Routes>
-          <Route path='/' element={<Main logged={this.state.logged} addNote={this.addNote} notes={this.state.notes} checkItem={this.checkItem}/>} />
+          <Route path='/' element={<Main logged={this.state.logged} addNote={this.addNote} notes={this.state.notes} checkItem={this.checkItem} deleteItem={this.deleteItem}/>} />
           <Route path='/login' element={<Login logging={this.logging} logged={this.state.logged} />} />
           <Route path='/registration' element={<Registration />} />
         </Routes>

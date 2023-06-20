@@ -51,24 +51,7 @@ class Main extends Component {
     }
   }
 
-  deleteItem = (id) => {
-    if (this.state.ourChoose) {
-      this.setState(({ dataPersonal }) => {
-        return {
-          dataPersonal: dataPersonal.filter(item => item.id !== id)
-        }
-      });
-    } else {
-      this.setState(({ dataProfessional }) => {
-        return {
-          dataProfessional: dataProfessional.filter(item => item.id !== id)
-        }
-      });
-    }
-  }
-
   render() {
-    // const { ourChoose, dataPersonal, dataProfessional } = this.state;
     const { logged } = this.props;
     const { notes } = this.props
 
@@ -82,7 +65,7 @@ class Main extends Component {
           />
           <AppList
             data={notes}
-            deleteItem={this.deleteItem}
+            deleteItem={this.props.deleteItem}
             checkItem={this.props.checkItem}
           />
         </main>) :
