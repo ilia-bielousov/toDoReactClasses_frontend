@@ -3,7 +3,7 @@ import { Col, ListGroupItem } from "react-bootstrap";
 import markedNote from './../../assets/images/markedNote.png';
 import nomarkedNote from './../../assets/images/nomarkedNote.png';
 
-import './AppListItem.scss'
+import './appListItem.scss'
 
 class AppListItem extends Component {
   constructor(props) {
