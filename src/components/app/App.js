@@ -32,7 +32,7 @@ class App extends Component {
   }
 
   getAllNotes = async () => {
-    await fetch('http://localhost:5000/notes', {
+    await fetch(`${process.env.REACT_APP_API_URL}/notes`, {
       method: 'GET',
       headers: {
         authorization: window.localStorage.getItem('token')
@@ -49,7 +49,7 @@ class App extends Component {
       _id: id
     }
 
-    await fetch('http://localhost:5000/delete-note', {
+    await fetch(`${process.env.REACT_APP_API_URL}delete-note`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -97,7 +97,7 @@ class App extends Component {
       checked
     }
 
-    await fetch('http://localhost:5000/update-note', {
+    await fetch(`${process.env.REACT_APP_API_URL}/update-note`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',

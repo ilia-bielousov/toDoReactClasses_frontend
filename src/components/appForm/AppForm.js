@@ -19,7 +19,7 @@ class AppForm extends Component {
       profile: onChoose ? 'Personal' : 'Professional'
     };
 
-    await fetch('http://localhost:5000/add-note', {
+    await fetch(`${process.env.REACT_APP_API_URL}/add-note`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
