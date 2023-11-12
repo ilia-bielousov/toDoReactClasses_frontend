@@ -32,7 +32,7 @@ class Login extends Component {
       password: this.state.password
     }
 
-    await fetch(`${process.env.REACT_APP_API_URL}/login`, {
+    await fetch(`http://localhost:5000/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8'

@@ -1,5 +1,7 @@
 import { Component } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import Layout from '../Layout/Layout';
+import PageTransition from '../PageTransition/PageTransition';
 import AppHeader from '../appHeader/AppHeader';
 import Main from '../../pages/main';
 import Login from '../../pages/login/login';
@@ -32,7 +34,7 @@ class App extends Component {
   }
 
   getAllNotes = async () => {
-    await fetch(`${process.env.REACT_APP_API_URL}/notes`, {
+    await fetch(`http://localhost:5000/notes`, {
       method: 'GET',
       headers: {
         authorization: window.localStorage.getItem('token')
@@ -49,7 +51,7 @@ class App extends Component {
       _id: id
     }
 
-    await fetch(`${process.env.REACT_APP_API_URL}delete-note`, {
+    await fetch(`http://localhost:5000/delete-note`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -97,7 +99,7 @@ class App extends Component {
       checked
     }
 
-    await fetch(`${process.env.REACT_APP_API_URL}/update-note`, {
+    await fetch(`http://localhost:5000/update-note`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -132,23 +134,37 @@ class App extends Component {
 
   render() {
     return (
-      <>
-        <AppHeader logout={this.logout} logged={this.state.logged} />
+      <div className='app'>
         <Routes>
-          <Route path='/' element={
-            <Main
-              logged={this.state.logged}
-              addNote={this.addNote}
-              notes={this.state.notes}
-              checkItem={this.checkItem}
-              deleteItem={this.deleteItem}
-            />}
-          />
-          <Route path='/login' element={<Login logging={this.logging} logged={this.state.logged} />} />
-          <Route path='/registration' element={<Registration />} />
+          <Route path='/' element={<Layout />} >
+            <Route index element={
+              <PageTransition>
+                <Main
+                  logged={this.state.logged}
+                  addNote={this.addNote}
+                  notes={this.state.notes}
+                  checkItem={this.checkItem}
+                  deleteItem={this.deleteItem}
+                />
+              </PageTransition>
+            } />
+            <Route path='login' element={
+              <PageTransition>
+                <Login
+                  logging={this.logging}
+                  logged={this.state.logged}
+                />
+              </PageTransition>
+            } />
+            <Route path='registration' element={
+              <PageTransition>
+                <Registration />
+              </PageTransition>
+            } />
+          </Route>
         </Routes>
-      </>
-    );
+      </div>
+    )
   }
 }
 

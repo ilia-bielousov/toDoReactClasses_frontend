@@ -33,7 +33,7 @@ class Registration extends Component {
       password: this.state.password
     }
 
-    await fetch(`${process.env.REACT_APP_API_URL}/registration`, {
+    await fetch(`http://localhost:5000/registration`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8'
