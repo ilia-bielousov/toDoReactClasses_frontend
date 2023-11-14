@@ -1,15 +1,24 @@
-import { Component } from 'react';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
+
 import Layout from '../Layout/Layout';
 import PageTransition from '../PageTransition/PageTransition';
 import Main from '../../pages/main/main';
 import Login from '../../pages/login/login';
 import Registration from '../../pages/registration/registration';
+import { loggedTrue } from '../../store/clientReducer';
 
 const App = () => {
-  // const state = {
-  //   logged: false
-  // }
+  const dispatch = useDispatch();
+  // const logged = useSelector(state => state.client.logged);
+
+  useEffect(() => {
+    if (window.localStorage.getItem('token')) {
+      dispatch(loggedTrue(true));
+    }
+  }, []);
+
 
   // const getAllNotes = async () => {
   //   await fetch(`http://localhost:5000/notes`, {
@@ -117,11 +126,11 @@ const App = () => {
           <Route index element={
             <PageTransition>
               <Main
-                // logged={this.state.logged}
-                // addNote={this.addNote}
-                // notes={this.state.notes}
-                // checkItem={this.checkItem}
-                // deleteItem={this.deleteItem}
+              // logged={this.state.logged}
+              // addNote={this.addNote}
+              // notes={this.state.notes}
+              // checkItem={this.checkItem}
+              // deleteItem={this.deleteItem}
               />
             </PageTransition>
           } />

@@ -1,32 +1,27 @@
-import { Component } from "react";
+import { useDispatch } from "react-redux";
 import { Container, Row, Nav } from "react-bootstrap";
+import { inputChoose } from "../../store/clientReducer";
 import './AppNav.scss';
 
-class AppNav extends Component {
+const AppNav = () => {
+  const dispatch = useDispatch();
 
-  switch = (e) => {
-    this.props.onChoose(e.target);
-  }
-
-  render() { // написать проверку если пользователь залогинен, выводим одно меню, если нет, то совершенно другое, где кнопка логин и регистрация
-    
-    return (
-      <div className="nav">
-        <Container>
-          <Row>
-            <Nav variant="tabs" defaultActiveKey={this.props.ourChoose ? 'Personal' : 'Professional' }>
-              <Nav.Item className="col-12 col-sm-6" onClick={this.switch}>
-                <Nav.Link eventKey="Personal" data-personal>Personal</Nav.Link>
-              </Nav.Item>
-              <Nav.Item className="col-12 col-sm-6" onClick={this.switch}>
-                <Nav.Link eventKey="Professional">Professional</Nav.Link>
-              </Nav.Item>
-            </Nav>
-          </Row>
-        </Container>
-      </div >
-    );
-  }
+  return (
+    <div className="nav">
+      <Container>
+        <Row>
+          <Nav variant="tabs" defaultActiveKey={'Personal'}>
+            <Nav.Item className="col-12 col-sm-6" onClick={() => dispatch(inputChoose('Personal'))} >
+              <Nav.Link eventKey="Personal" data-personal>Personal</Nav.Link>
+            </Nav.Item>
+            <Nav.Item className="col-12 col-sm-6" onClick={() => dispatch(inputChoose('Professional'))}>
+              <Nav.Link eventKey="Professional">Professional</Nav.Link>
+            </Nav.Item>
+          </Nav>
+        </Row>
+      </Container>
+    </div >
+  )
 }
 
 export default AppNav;

@@ -1,22 +1,20 @@
-import { Component } from "react";
-import './AppForm.scss';
+import { useForm } from "react-hook-form";
 import { Container, Col, Form, Button } from "react-bootstrap";
+import './AppForm.scss';
+import { useSelector } from "react-redux";
 
-class AppForm extends Component {
-  constructor(props) {
-    super(props);
+const AppForm = () => {
+  const choose = useSelector(state => state.client.choose);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm(); // обработать чтобы был текст
 
-    this.state = {
-      text: ''
-    }
-  }
-
-  addNote = async (text) => {
-    const { onChoose }= this.props;
-
+  const onSubmit = async (data) => {
     const note = {
-      text,
-      profile: onChoose ? 'Personal' : 'Professional'
+      ...data,
+      profile: choose
     };
 
     await fetch(`http://localhost:5000/add-note`, {
@@ -27,40 +25,30 @@ class AppForm extends Component {
       },
       body: JSON.stringify(note)
     })
-    .then(res => res.json())
-    .then(res => console.log(res));
+      .then(res => res.json())
+      .then(res => console.log(res));
   }
 
-  newNote = (e) => {
-    this.setState({
-      text: e.target.value
-    });
-  }
-
-  add = (e) => {
-    // e.preventDefault();
-
-    this.addNote(this.state.text);
-
-    this.setState({
-      text: ''
-    });
-  }
-
-  render() {
-    return (
-      <Container>
-        <Form className="main__form py-5" onSubmit={this.add}>
-          <Col className="d-flex justify-content-center">
-            <Form.Control className="form-control" type="text" name="text" placeholder="What do you need to do?" onInput={this.newNote} value={this.state.text}/>
-            <Button className="form__btn" type="submit" variant="primary">
-              add
-            </Button>
-          </Col>
-        </Form>
-      </Container>
-    );
-  }
+  return (
+    <Container>
+      <Form className="main__form py-5"
+        onSubmit={handleSubmit(onSubmit)}
+      >
+        <Col className="d-flex justify-content-center">
+          <Form.Control
+            className="form-control"
+            type="text"
+            name="text"
+            placeholder="What do you need to do?"
+            {...register('text')}
+          />
+          <Button className="form__btn" type="submit" variant="primary">
+            add
+          </Button>
+        </Col>
+      </Form>
+    </Container>
+  );
 }
 
 export default AppForm;

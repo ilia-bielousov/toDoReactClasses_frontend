@@ -1,14 +1,13 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
-import { Container, Row, Form, Button, Nav } from 'react-bootstrap';
+import { Container, Row, Form, Button } from 'react-bootstrap';
 import { Navigate } from 'react-router-dom';
 import { inputUser, loggedTrue } from '../../store/clientReducer';
+
 import './login.scss';
-import { useEffect } from 'react';
 
 const Login = () => {
   const dispatch = useDispatch();
-  const user = useSelector(state => state.client.user);
   const logged = useSelector(state => state.client.logged);
 
   const {

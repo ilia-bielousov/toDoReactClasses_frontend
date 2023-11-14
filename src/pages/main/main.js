@@ -3,8 +3,10 @@ import AppForm from "../../components/appForm/AppForm";
 import AppNav from "../../components/appNav/AppNav";
 import AppList from "../../components/appList/AppList";
 import { Container, Row } from "react-bootstrap";
+import { getAllNotes } from '../../store/asyncAction/notes';
 
 import './main.scss';
+import { useEffect } from "react";
 
 const notLoggedLayout = () => {
   return (
@@ -46,25 +48,22 @@ const notLoggedLayout = () => {
 const LoggedLayout = () => {
   return (
     <main className='main'>
-      <AppNav
-      // onChoose={this.chooseDataBase}
-      // ourChoose={this.state.ourChoose}
-      />
-      <AppForm
-      // onChoose={this.state.ourChoose}
-      />
-      <AppList
-      // data={notes}
-      // onChoose={this.state.ourChoose}
-      // deleteItem={this.props.deleteItem}
-      // checkItem={this.props.checkItem}
-      />
+      <AppNav />
+      <AppForm />
+      <AppList />
     </main>
   )
 }
 
 const Main = () => {
+  const dispatch = useDispatch();
   const logged = useSelector(state => state.client.logged);
+
+  useEffect(() => {
+    if (logged) {
+      dispatch(getAllNotes());
+    }
+  }, [logged]);
 
   return (
     logged ? LoggedLayout() : notLoggedLayout()
