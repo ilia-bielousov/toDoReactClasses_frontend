@@ -36,6 +36,7 @@ const Login = () => {
         if (!res.success) {
           alert(res.message);
         } else {
+          window.localStorage.setItem('token', res.token);
           dispatch(loggedTrue(true));
         }
       });

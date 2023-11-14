@@ -2,170 +2,143 @@ import { Component } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Layout from '../Layout/Layout';
 import PageTransition from '../PageTransition/PageTransition';
-import AppHeader from '../appHeader/AppHeader';
-import Main from '../../pages/main';
+import Main from '../../pages/main/main';
 import Login from '../../pages/login/login';
 import Registration from '../../pages/registration/registration';
 
-class App extends Component {
-  constructor() {
-    super();
+const App = () => {
+  // const state = {
+  //   logged: false
+  // }
 
-    this.state = {
-      logged: false
-    }
+  // const getAllNotes = async () => {
+  //   await fetch(`http://localhost:5000/notes`, {
+  //     method: 'GET',
+  //     headers: {
+  //       authorization: window.localStorage.getItem('token')
+  //     },
+  //   })
+  //     .then(res => res.json())
+  //     .then(res => {
+  //       this.getDB(res);
+  //     });
+  // }
 
-    this.logging = this.logging.bind(this);
-    this.logout = this.logout.bind(this);
-  }
+  // const deleteNote = async (id) => {
+  //   const note = {
+  //     _id: id
+  //   }
 
-  logging(res) {
-    window.localStorage.setItem('token', res.token);
-    this.setState({
-      logged: true
-    });
-  }
+  //   await fetch(`http://localhost:5000/delete-note`, {
+  //     method: 'DELETE',
+  //     headers: {
+  //       'Content-Type': 'application/json;charset=utf-8',
+  //       authorization: window.localStorage.getItem('token'),
+  //     },
+  //     body: JSON.stringify(note)
+  //   })
+  //     .then(res => res.json())
+  //     .then(res => {
+  //       console.log(res);
+  //     });
+  // }
 
-  logout() {
-    window.localStorage.removeItem('token');
-    this.setState({
-      logged: false
-    });
-  }
+  // const getDB = async (res) => {
+  //   res = res.map(item => {
+  //     return { ...item }
+  //   });
 
-  getAllNotes = async () => {
-    await fetch(`http://localhost:5000/notes`, {
-      method: 'GET',
-      headers: {
-        authorization: window.localStorage.getItem('token')
-      },
-    })
-      .then(res => res.json())
-      .then(res => {
-        this.getDB(res);
-      });
-  }
+  //   const newData = [...res];
 
-  deleteNote = async (id) => {
-    const note = {
-      _id: id
-    }
+  //   this.setState(() => {
+  //     return {
+  //       notes: newData
+  //     }
+  //   });
+  // }
 
-    await fetch(`http://localhost:5000/delete-note`, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json;charset=utf-8',
-        authorization: window.localStorage.getItem('token'),
-      },
-      body: JSON.stringify(note)
-    })
-      .then(res => res.json())
-      .then(res => {
-        console.log(res);
-      });
-  }
+  // const componentDidMount() {
+  //   if (window.localStorage.getItem('token')) {
+  //     this.setState({
+  //       logged: true
+  //     });
+  //   }
+  // }
 
-  getDB = async (res) => {
-    res = res.map(item => {
-      return { ...item }
-    });
+  // const componentDidUpdate(prevProps, prevState) {
+  //   if (prevState.logged != this.state.logged && this.state.logged != false) {
+  //     this.getAllNotes();
+  //   }
+  // }
 
-    const newData = [...res];
+  // const updateCheckItem = async (id, checked) => {
+  //   const note = {
+  //     _id: id,
+  //     checked
+  //   }
 
-    this.setState(() => {
-      return {
-        notes: newData
-      }
-    });
-  }
+  //   await fetch(`http://localhost:5000/update-note`, {
+  //     method: 'PATCH',
+  //     headers: {
+  //       'Content-Type': 'application/json;charset=utf-8',
+  //       authorization: window.localStorage.getItem('token')
+  //     },
+  //     body: JSON.stringify(note)
+  //   })
+  //     .then(res => res.json());
+  // }
 
-  componentDidMount() {
-    if (window.localStorage.getItem('token')) {
-      this.setState({
-        logged: true
-      });
-    }
-  }
+  // const checkItem = (id) => {
+  //   this.setState(({ notes }) => ({
+  //     notes: notes.map(item => {
+  //       if (item._id === id) {
+  //         this.updateCheckItem(id, !item.checked);
+  //         return { ...item, checked: !item.checked }
+  //       }
+  //       return item;
+  //     })
+  //   }));
+  // }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (prevState.logged != this.state.logged && this.state.logged != false) {
-      this.getAllNotes();
-    }
-  }
+  // const deleteItem = (id) => {
+  //   this.setState(({ notes }) => {
+  //     return {
+  //       notes: notes.filter(item => item._id !== id)
+  //     }
+  //   });
 
-  updateCheckItem = async (id, checked) => {
-    const note = {
-      _id: id,
-      checked
-    }
+  //   this.deleteNote(id)
+  // }
 
-    await fetch(`http://localhost:5000/update-note`, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json;charset=utf-8',
-        authorization: window.localStorage.getItem('token')
-      },
-      body: JSON.stringify(note)
-    })
-      .then(res => res.json());
-  }
-
-  checkItem = (id) => {
-    this.setState(({ notes }) => ({
-      notes: notes.map(item => {
-        if (item._id === id) {
-          this.updateCheckItem(id, !item.checked);
-          return { ...item, checked: !item.checked }
-        }
-        return item;
-      })
-    }));
-  }
-
-  deleteItem = (id) => {
-    this.setState(({ notes }) => {
-      return {
-        notes: notes.filter(item => item._id !== id)
-      }
-    });
-
-    this.deleteNote(id)
-  }
-
-  render() {
-    return (
-      <div className='app'>
-        <Routes>
-          <Route path='/' element={<Layout />} >
-            <Route index element={
-              <PageTransition>
-                <Main
-                  logged={this.state.logged}
-                  addNote={this.addNote}
-                  notes={this.state.notes}
-                  checkItem={this.checkItem}
-                  deleteItem={this.deleteItem}
-                />
-              </PageTransition>
-            } />
-            <Route path='login' element={
-              <PageTransition>
-                <Login
-                  logging={this.logging}
-                  logged={this.state.logged}
-                />
-              </PageTransition>
-            } />
-            <Route path='registration' element={
-              <PageTransition>
-                <Registration />
-              </PageTransition>
-            } />
-          </Route>
-        </Routes>
-      </div>
-    )
-  }
+  return (
+    <div className='app'>
+      <Routes>
+        <Route path='/' element={<Layout />} >
+          <Route index element={
+            <PageTransition>
+              <Main
+                // logged={this.state.logged}
+                // addNote={this.addNote}
+                // notes={this.state.notes}
+                // checkItem={this.checkItem}
+                // deleteItem={this.deleteItem}
+              />
+            </PageTransition>
+          } />
+          <Route path='login' element={
+            <PageTransition>
+              <Login />
+            </PageTransition>
+          } />
+          <Route path='registration' element={
+            <PageTransition>
+              <Registration />
+            </PageTransition>
+          } />
+        </Route>
+      </Routes>
+    </div>
+  )
 }
 
 export default App;

@@ -10,7 +10,6 @@ const defaultState = {
 const LOGGED_TRUE = 'LOGGED_TRUE';
 const LOGGED_FALSE = 'LOGGED_FALSE';
 const INPUT_USER = 'INPUT_USER';
-// const INPUT_PSW = 'INPUT_PSW';
 
 
 export const clientReducer = (state = defaultState, action) => {
@@ -32,4 +31,3 @@ export const clientReducer = (state = defaultState, action) => {
 export const loggedTrue = (payload) => ({ type: LOGGED_TRUE, payload });
 export const loggedFalse = (payload) => ({ type: LOGGED_FALSE, payload });
 export const inputUser = (payload) => ({ type: INPUT_USER, payload });
-// export const inputPsw = (payload) => ({ type: INPUT_PSW, payload });

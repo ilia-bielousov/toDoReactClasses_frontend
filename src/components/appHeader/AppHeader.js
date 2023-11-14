@@ -26,14 +26,19 @@ const LoggedOut = (dispatch) => {
     <Row>
       <Nav variant="tabs" className="nav_style-bg d-flex justify-content-center">
         <Nav.Item className="header__nav-item">
-          <Link to="/" onClick={() => dispatch(loggedFalse(false))} className="header__link">Logout</Link>
+          <Link to="/" onClick={() => loggingOut(dispatch)} className="header__link">Logout</Link>
         </Nav.Item>
       </Nav>
     </Row >
   )
 }
 
-const AppHeader = (props) => {
+const loggingOut = (dispatch) => {
+  dispatch(loggedFalse(false))
+  window.localStorage.removeItem('token');
+}
+
+const AppHeader = () => {
   const dispatch = useDispatch();
   const logged = useSelector(state => state.client.logged);
 
