@@ -1,7 +1,7 @@
 import { getNotes } from "../clientReducer";
 
 export const getAllNotes = () => {
-  return function (dispatch) {
+  return function (dispatch) {   
     fetch('http://localhost:5000/notes', {
       method: 'GET',
       headers: {
@@ -10,7 +10,6 @@ export const getAllNotes = () => {
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data);
         dispatch(getNotes(data));
       });
   }

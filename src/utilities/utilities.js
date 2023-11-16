@@ -1,12 +1,14 @@
-// export const getRequest = async (url) => {
-//   await fetch(url, {
-//     method: 'GET',
-//     headers: {
-//       authorization: window.localStorage.getItem('token')
-//     },
-//   })
-//     .then(res => res.json())
-//     .then(res => {
-//       console.log(res);
-//     });
-// }
+export const Request = async (url, method, body) => {
+  await fetch(url, {
+    method: method,
+    headers: {
+      'Content-Type': 'application/json;charset=utf-8',
+      authorization: window.localStorage.getItem('token')
+    },
+    body: body ?  JSON.stringify(body) : null
+  })
+    .then(res => res.json())
+    // .then(res => {
+    //   console.log(res);
+    // });
+}

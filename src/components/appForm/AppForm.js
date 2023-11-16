@@ -1,15 +1,19 @@
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { Container, Col, Form, Button } from "react-bootstrap";
+import { useSelector, useDispatch } from "react-redux";
+import { Request } from "../../utilities/utilities";
+import { doChange } from "../../store/clientReducer";
 import './AppForm.scss';
-import { useSelector } from "react-redux";
 
 const AppForm = () => {
+  const dispatch = useDispatch();
   const choose = useSelector(state => state.client.choose);
   const {
     register,
     handleSubmit,
-    formState: { errors }
-  } = useForm(); // обработать чтобы был текст
+    formState: { errors },
+  } = useForm();
 
   const onSubmit = async (data) => {
     const note = {
@@ -17,16 +21,8 @@ const AppForm = () => {
       profile: choose
     };
 
-    await fetch(`http://localhost:5000/add-note`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json;charset=utf-8',
-        authorization: window.localStorage.getItem('token')
-      },
-      body: JSON.stringify(note)
-    })
-      .then(res => res.json())
-      .then(res => console.log(res));
+    Request('http://localhost:5000/add-note', 'POST', note);
+    dispatch(doChange(true));
   }
 
   return (
@@ -42,7 +38,11 @@ const AppForm = () => {
             placeholder="What do you need to do?"
             {...register('text')}
           />
-          <Button className="form__btn" type="submit" variant="primary">
+          <Button 
+          className="form__btn" 
+          type="submit"
+          // onClick={}
+          variant="primary">
             add
           </Button>
         </Col>

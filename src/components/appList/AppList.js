@@ -5,6 +5,7 @@ import './AppList.scss';
 
 const AppList = () => {
   const notes = useSelector(state => state.client.notes);
+  const choose = useSelector(state => state.client.choose);
 
   return (
     <Container>
@@ -12,12 +13,15 @@ const AppList = () => {
         <ListGroup as="ul" className="list__inner">
           {notes.map(item => {
             const { _id, ...itemProps } = item;
-            return (
-              <AppListItem
-                key={_id}
-                {...itemProps}
-              />
-            )
+            if (item.profile == choose) {
+              return (
+                <AppListItem
+                  key={_id}
+                  id={_id}
+                  {...itemProps}
+                />
+              )
+            }
           })}
         </ListGroup>
       </Row>

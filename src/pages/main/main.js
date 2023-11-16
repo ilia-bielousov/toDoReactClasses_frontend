@@ -4,6 +4,7 @@ import AppNav from "../../components/appNav/AppNav";
 import AppList from "../../components/appList/AppList";
 import { Container, Row } from "react-bootstrap";
 import { getAllNotes } from '../../store/asyncAction/notes';
+import { doChange } from "../../store/clientReducer";
 
 import './main.scss';
 import { useEffect } from "react";
@@ -58,12 +59,14 @@ const LoggedLayout = () => {
 const Main = () => {
   const dispatch = useDispatch();
   const logged = useSelector(state => state.client.logged);
+  const changes = useSelector(state => state.client.diff);
 
   useEffect(() => {
     if (logged) {
       dispatch(getAllNotes());
     }
-  }, [logged]);
+    dispatch(doChange(false));
+  }, [logged, changes]);
 
   return (
     logged ? LoggedLayout() : notLoggedLayout()
