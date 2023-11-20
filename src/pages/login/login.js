@@ -17,8 +17,6 @@ const Login = () => {
   } = useForm();
 
   const onSubmit = (user) => {
-    dispatch(inputUser(user));
-
     req(user);
   }
 
