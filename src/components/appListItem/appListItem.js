@@ -96,7 +96,7 @@ const AppListItem = (props) => {
         _id: id
       }
 
-      await Request('http://localhost:5000/delete-note', 'DELETE', note);
+      await Request(`${process.env.REACT_APP_API_URL}delete-note`, 'DELETE', note);
       dispatch(doChange(true));
     }, 300);
   }
