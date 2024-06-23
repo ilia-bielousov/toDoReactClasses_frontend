@@ -17,7 +17,7 @@ const Registration = () => {
   const registration = async (body) => {
 
     if (body.password === body.password_repeat) {
-      await fetch(`http://localhost:5000/registration`, {
+      await fetch(`${process.env.REACT_APP_API_URL}registration`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json;charset=utf-8'

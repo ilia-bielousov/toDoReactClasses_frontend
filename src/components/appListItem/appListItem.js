@@ -63,7 +63,7 @@ const AppListItem = (props) => {
       text: textNote
     };
 
-    Request('http://localhost:5000/update-note-text', 'PATCH', note)
+    Request(`${process.env.REACT_APP_API_URL}update-note-text`, 'PATCH', note)
     dispatch(doChange(true));
     setIsEdited(false);
   }
@@ -84,7 +84,7 @@ const AppListItem = (props) => {
       checked
     };
 
-    Request('http://localhost:5000/update-note-check', 'PATCH', note);
+    Request(`${process.env.REACT_APP_API_URL}update-note-check`, 'PATCH', note);
     dispatch(doChange(true));
   }
 

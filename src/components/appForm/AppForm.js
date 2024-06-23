@@ -21,7 +21,7 @@ const AppForm = () => {
       profile: choose
     };
 
-    Request('http://localhost:5000/add-note', 'POST', note);
+    Request(`${process.env.REACT_APP_API_URL}add-note`, 'POST', note);
     dispatch(doChange(true));
     reset();
   }
@@ -37,14 +37,14 @@ const AppForm = () => {
             type="text"
             name="text"
             placeholder="What do you need to do?"
-            {...register('text', {required: true})}
+            {...register('text', { required: true })}
           />
-          { errors.text ? alert('обязательно вводите текст для заметки') : null }
-          <Button 
-          className="form__btn" 
-          type="submit"
-          // onClick={}
-          variant="primary">
+          {errors.text ? alert('обязательно вводите текст для заметки') : null}
+          <Button
+            className="form__btn"
+            type="submit"
+            // onClick={}
+            variant="primary">
             add
           </Button>
         </Col>
