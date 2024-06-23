@@ -13,7 +13,7 @@ const AppList = () => {
         <ListGroup as="ul" className="list__inner">
           {notes.map(item => {
             const { _id, ...itemProps } = item;
-            if (item.profile == choose) {
+            if (item.profile === choose) {
               return (
                 <AppListItem
                   key={_id}

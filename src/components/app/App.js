@@ -1,9 +1,8 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 
 import Layout from '../Layout/Layout';
-import PageTransition from '../PageTransition/PageTransition';
 import Main from '../../pages/main/main';
 import Login from '../../pages/login/login';
 import Registration from '../../pages/registration/registration';
@@ -23,19 +22,13 @@ const App = () => {
       <Routes>
         <Route path='/' element={<Layout />} >
           <Route index element={
-            <PageTransition>
-              <Main />
-            </PageTransition>
+            <Main />
           } />
           <Route path='login' element={
-            <PageTransition>
-              <Login />
-            </PageTransition>
+            <Login />
           } />
           <Route path='registration' element={
-            <PageTransition>
-              <Registration />
-            </PageTransition>
+            <Registration />
           } />
         </Route>
       </Routes>

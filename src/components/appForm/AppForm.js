@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { Container, Col, Form, Button } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
@@ -13,6 +12,7 @@ const AppForm = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
 
   const onSubmit = async (data) => {
@@ -23,6 +23,7 @@ const AppForm = () => {
 
     Request('http://localhost:5000/add-note', 'POST', note);
     dispatch(doChange(true));
+    reset();
   }
 
   return (
@@ -36,8 +37,9 @@ const AppForm = () => {
             type="text"
             name="text"
             placeholder="What do you need to do?"
-            {...register('text')}
+            {...register('text', {required: true})}
           />
+          { errors.text ? alert('обязательно вводите текст для заметки') : null }
           <Button 
           className="form__btn" 
           type="submit"

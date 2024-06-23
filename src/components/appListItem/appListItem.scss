@@ -8,21 +8,50 @@
   }
 
   &__item {
+    position: relative;
     margin-bottom: 25px;
 
     @media (max-width: 576px) {
       margin-bottom: 15px;
     }
+
+    transition: opacity 0.3s ease-out;
+
+    &.deleting {
+      opacity: 0;
+    }
+
+    &.adding {
+      opacity: 0;
+      animation: fadeIn 0.3s forwards;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
   }
 
   &__done {
     justify-self: center;
   }
+
+  &__text-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid $bg_btn;
+  }
   
   &__text {
+    width: 100%;
+    background-color: transparent;
+    margin-right: 15px;
     margin-bottom: 0px;
     padding: 15px;
-    border-bottom: 2px solid $bg_btn;
+    border: none;
     font-size: 24px;
   
     @media (max-width: 768px) {
@@ -32,6 +61,33 @@
     @media (max-width: 576px) {
       font-size: 16px;
     }
+
+    &:focus-visible {
+      outline-color: $orange;
+      outline-width: thin;
+    }
+
+    &:focus-visible.edited {
+      outline: none;
+      // outline-width: thin;
+    }
+
+
+    &.edited {
+      border-radius: 5px;;
+      border-style: solid;
+      border-color: red;
+    }
+  }
+
+  &__inner-update {
+    position: absolute;
+    right: 120px;
+  }
+
+  &__button-update {
+    border-radius: 15px;
+    padding: 7px 10px;
   }
   
   &__delete {

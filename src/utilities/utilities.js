@@ -5,10 +5,7 @@ export const Request = async (url, method, body) => {
       'Content-Type': 'application/json;charset=utf-8',
       authorization: window.localStorage.getItem('token')
     },
-    body: body ?  JSON.stringify(body) : null
+    body: body ? JSON.stringify(body) : null
   })
-    .then(res => res.json())
-    // .then(res => {
-    //   console.log(res);
-    // });
+    .then(res => { return res })
 }

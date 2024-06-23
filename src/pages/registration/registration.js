@@ -15,7 +15,6 @@ const Registration = () => {
   } = useForm();
 
   const registration = async (body) => {
-    console.log(body);
 
     if (body.password === body.password_repeat) {
       await fetch(`http://localhost:5000/registration`, {
@@ -46,7 +45,7 @@ const Registration = () => {
   if (status) {
     dispatch(stateRegister(false));
 
-    return <Navigate to='/' />
+    return <Navigate to='/login' />
   }
 
   return (
