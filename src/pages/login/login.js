@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { Container, Row, Form, Button } from 'react-bootstrap';
 import { Navigate } from 'react-router-dom';
-import { inputUser, loggedTrue } from '../../store/clientReducer';
+import { loggedTrue } from '../../store/clientReducer';
 
 import './login.scss';
 
@@ -13,7 +13,6 @@ const Login = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors }
   } = useForm();
 
   const onSubmit = (user) => {
